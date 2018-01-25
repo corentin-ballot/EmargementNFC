@@ -1,14 +1,9 @@
 package ballot.corentin.emargementnfc;
 
 import android.content.Intent;
-import android.nfc.NfcAdapter;
-import android.nfc.Tag;
-import android.nfc.tech.Ndef;
-import android.nfc.tech.NdefFormatable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,5 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void emargement(View view) {
+        Intent monIntent = new Intent(this, EmargementsActivity.class);
+        startActivity(monIntent);
     }
 }

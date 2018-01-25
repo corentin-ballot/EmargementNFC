@@ -62,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
             String carte_id = ((TextView) findViewById(R.id.register_tag_id)).getText().toString();
 
             // check data validity
-            if(nom.length() > 0 && prenom.length() > 0 && carte_id.length() != 20)
+            if(nom.length() <= 0 || prenom.length() <= 0 || carte_id.length() != 20)
                 throw new Exception();
 
             addNewEtudiant(num_etu, nom, prenom, carte_id);

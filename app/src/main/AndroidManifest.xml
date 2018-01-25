@@ -36,7 +36,11 @@
                 android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
-        <activity android:name=".EmargementActivity"></activity>
+        <activity android:name=".EmargementsActivity" />
+        <activity
+            android:name=".AddEmargementActivity"
+            android:label="@string/title_activity_add_emargement"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

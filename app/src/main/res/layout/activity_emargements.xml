@@ -4,12 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ballot.corentin.emargementnfc.EmargementActivity"
+    tools:context="ballot.corentin.emargementnfc.EmargementsActivity"
     android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/newemargement"
+        android:onClick="add"/>
 
     <ListView
         android:id="@+id/list_emargement"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
