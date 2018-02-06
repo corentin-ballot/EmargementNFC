@@ -16,5 +16,8 @@
     <string name="intitule">Intitulé de  l\'examen</string>
     <string name="date">Date</string>
     <string name="add_exam">Ajouter l\'examen</string>
+    <string name="etudiant">Étudiants</string>
+    <string name="carte_id">Identifiant de la carte étudiant</string>
+    <string name="delete">Supprimer</string>
 
 </resources>

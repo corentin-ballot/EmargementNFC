@@ -37,10 +37,12 @@
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
         <activity android:name=".EmargementsActivity" />
+        <activity android:name=".EtudiantsActivity" />
         <activity
             android:name=".AddEmargementActivity"
             android:label="@string/title_activity_add_emargement"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EtudiantActivity"></activity>
     </application>
 
 </manifest>

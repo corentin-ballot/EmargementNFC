@@ -7,22 +7,24 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import static ballot.corentin.emargementnfc.PresenceDBHelper.ETUDIANT_ID;
+import static ballot.corentin.emargementnfc.PresenceDBHelper.ETUDIANT_NAME;
+import static ballot.corentin.emargementnfc.PresenceDBHelper.ETUDIANT_SURNAME;
 import static ballot.corentin.emargementnfc.PresenceDBHelper.EXAMEN_DATE;
 import static ballot.corentin.emargementnfc.PresenceDBHelper.EXAMEN_ID;
 import static ballot.corentin.emargementnfc.PresenceDBHelper.EXAMEN_NAME;
 
-public class EmargementsActivity extends AppCompatActivity {
+public class EtudiantsActivity extends AppCompatActivity {
 
-    ListView lv_list_emargement;
-    BroadcastReceiver br;
+    ListView lv_list_etudiant;
 
     private SQLiteDatabase sqlitedb = null;
     private PresenceDBHelper preDB = null;
@@ -30,53 +32,32 @@ public class EmargementsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_emargements);
+        setContentView(R.layout.activity_etudiants);
 
-        lv_list_emargement = (ListView) findViewById(R.id.list_emargement);
+        lv_list_etudiant = (ListView) findViewById(R.id.list_etudiant);
 
         preDB = new PresenceDBHelper(this);
         sqlitedb = preDB.getWritableDatabase();
-
-        br = new Receiver();
-        IntentFilter filter = new IntentFilter("ballot.corentin.emargementnfc.NFC_TAG_ID");
-        this.registerReceiver(br, filter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        String[] paramSelect = {PresenceDBHelper.EXAMEN_ID, PresenceDBHelper.EXAMEN_NAME, PresenceDBHelper.EXAMEN_DATE};
-        Cursor answer = sqlitedb.query(PresenceDBHelper.EXAMEN_TABLE_NAME, paramSelect, null, null, null, null, null);
+        String[] paramSelect = {PresenceDBHelper.ETUDIANT_ID, PresenceDBHelper.ETUDIANT_NAME, PresenceDBHelper.ETUDIANT_SURNAME};
+        Cursor answer = sqlitedb.query(PresenceDBHelper.ETUDIANT_TABLE_NAME, paramSelect, null, null, null, null, null);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, answerCursorToStrings(answer));
 
         //adapter.add(id);
-        lv_list_emargement.setAdapter(adapter);
+        lv_list_etudiant.setAdapter(adapter);
 
-        lv_list_emargement.setBackgroundColor(Color.GRAY);
-    }
-
-    @Override
-    protected void onStop() {
-        try {
-            unregisterReceiver(br);
-        } catch (Exception e){}
-        super.onStop();
+        lv_list_etudiant.setBackgroundColor(Color.BLACK);
     }
 
     public void add(View view) {
-        Intent monIntent = new Intent(this, AddEmargementActivity.class);
+        Intent monIntent = new Intent(this, RegisterActivity.class);
         startActivity(monIntent);
-    }
-
-    public class Receiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            /* TODO: ajouter l'étudiant à la ListView et en base de données */
-            String id = intent.getExtras().getString("id");
-
-        }
     }
 
     public ArrayList<String> answerCursorToStrings(Cursor answer){
@@ -87,9 +68,9 @@ public class EmargementsActivity extends AppCompatActivity {
 
         while(!answer.isAfterLast()){
             for (int c=0; c<answer.getColumnCount(); c++){
-                answerString = answer.getString(answer.getColumnIndex(EXAMEN_ID)) + ". ";
-                answerString+= answer.getString(answer.getColumnIndex(EXAMEN_NAME));
-                answerString+= " ("  + answer.getString(answer.getColumnIndex(EXAMEN_DATE)) + ")";
+                answerString = answer.getString(answer.getColumnIndex(ETUDIANT_ID)) + " | ";
+                answerString+= answer.getString(answer.getColumnIndex(ETUDIANT_NAME));
+                answerString+= " "  + answer.getString(answer.getColumnIndex(ETUDIANT_SURNAME));
             }
             answer.moveToNext();
             answers.add(answerString);

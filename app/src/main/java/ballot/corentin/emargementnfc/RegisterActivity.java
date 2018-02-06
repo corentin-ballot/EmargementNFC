@@ -33,18 +33,23 @@ public class RegisterActivity extends AppCompatActivity {
 
         tv_tag_id = (TextView) findViewById(R.id.register_tag_id);
 
-        br = new Receiver();
-        IntentFilter filter = new IntentFilter("ballot.corentin.emargementnfc.NFC_TAG_ID");
-        this.registerReceiver(br, filter);
-
         preDB = new PresenceDBHelper(this);
         sqlitedb = preDB.getWritableDatabase();
     }
 
     @Override
-    protected void onStop() {
+    protected void onResume() {
+        super.onResume();
+
+        br = new Receiver();
+        IntentFilter filter = new IntentFilter("ballot.corentin.emargementnfc.NFC_TAG_ID");
+        this.registerReceiver(br, filter);
+    }
+
+    @Override
+    protected void onPause() {
         unregisterReceiver(br);
-        super.onStop();
+        super.onPause();
     }
 
     public void addnext(View view) {

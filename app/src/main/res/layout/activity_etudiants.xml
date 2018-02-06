@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ballot.corentin.emargementnfc.MainActivity"
+    tools:context="ballot.corentin.emargementnfc.EmargementsActivity"
     android:orientation="vertical">
 
-
     <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/etudiant"
-        android:onClick="etudiants"/>
+        android:text="@string/add"
+        android:onClick="add"/>
 
-    <Button
+    <ListView
+        android:id="@+id/list_etudiant"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/emargement"
-        android:onClick="emargement"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

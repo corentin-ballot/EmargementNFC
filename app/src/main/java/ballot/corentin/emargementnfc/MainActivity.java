@@ -13,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void enregistrement(View view) {
-        Intent monIntent = new Intent(this, RegisterActivity.class);
+    public void etudiants(View view) {
+        Intent monIntent = new Intent(this, EtudiantsActivity.class);
         startActivity(monIntent);
     }
 
