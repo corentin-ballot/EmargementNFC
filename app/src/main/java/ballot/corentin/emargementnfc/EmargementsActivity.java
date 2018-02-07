@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -55,6 +56,17 @@ public class EmargementsActivity extends AppCompatActivity {
         lv_list_emargement.setAdapter(adapter);
 
         lv_list_emargement.setBackgroundColor(Color.GRAY);
+
+        lv_list_emargement.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long id){
+                String item = (String) adapter.getItemAtPosition(position);
+
+                Intent intent = new Intent(getApplicationContext(), EmargementActivity.class);
+                intent.putExtra("EMARGEMENT_DATA", item);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

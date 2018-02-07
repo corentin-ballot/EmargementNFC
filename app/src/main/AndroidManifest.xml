@@ -37,6 +37,7 @@
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
         <activity android:name=".EmargementsActivity" />
+        <activity android:name=".EmargementActivity" />
         <activity android:name=".EtudiantsActivity" />
         <activity
             android:name=".AddEmargementActivity"

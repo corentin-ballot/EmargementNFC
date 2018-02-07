@@ -19,7 +19,7 @@ import static ballot.corentin.emargementnfc.PresenceDBHelper.EXAMEN_DATE;
 import static ballot.corentin.emargementnfc.PresenceDBHelper.EXAMEN_ID;
 import static ballot.corentin.emargementnfc.PresenceDBHelper.EXAMEN_NAME;
 
-public class EmargementsActivity extends AppCompatActivity {
+public class EmargementActivity extends AppCompatActivity {
 
     ListView lv_list_emargement;
     BroadcastReceiver br;
@@ -27,10 +27,12 @@ public class EmargementsActivity extends AppCompatActivity {
     private SQLiteDatabase sqlitedb = null;
     private PresenceDBHelper preDB = null;
 
+    private String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_emargements);
+        setContentView(R.layout.activity_emargement);
 
         lv_list_emargement = (ListView) findViewById(R.id.list_emargement);
 
@@ -45,16 +47,20 @@ public class EmargementsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        String[] paramSelect = {PresenceDBHelper.EMARGEMENT_EXAMEN_ID, PresenceDBHelper.EMARGEMENT_ETUDIANT_ID};
-        Cursor answer = sqlitedb.query(PresenceDBHelper.EMARGEMENT_TABLE_NAME, paramSelect, null, null, null, null, null);
+
+        String[] paramSelect = {PresenceDBHelper.PRESENCE_EXAMEN_ID, PresenceDBHelper.PRESENCE_ETUDIANT_ID};
+        Cursor answer = sqlitedb.query(PresenceDBHelper.PRESENCE_TABLE_NAME, paramSelect, null, null, null, null, null);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, answerCursorToStrings(answer));
 
-        //adapter.add(id);
         lv_list_emargement.setAdapter(adapter);
-
         lv_list_emargement.setBackgroundColor(Color.GRAY);
+
+
+
+        id = getIntent().getStringExtra("EMARGEMENT_DATA").split(". ")[1];
+
     }
 
     @Override

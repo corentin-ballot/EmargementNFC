@@ -48,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        unregisterReceiver(br);
+        //unregisterReceiver(br);
         super.onPause();
     }
 

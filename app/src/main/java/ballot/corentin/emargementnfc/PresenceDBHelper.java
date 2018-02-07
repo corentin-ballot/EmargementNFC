@@ -51,7 +51,8 @@ public class PresenceDBHelper extends SQLiteOpenHelper {
                 + ETUDIANT_ID + " INTEGER PRIMARY KEY , "
                 + ETUDIANT_NAME + " TEXT NOT NULL, "
                 + ETUDIANT_SURNAME + " TEXT NOT NULL, "
-                + ETUDIANT_NUM_CARTE + " TEXT NOT NULL UNIQUE);"
+                + ETUDIANT_NUM_CARTE + " TEXT NOT NULL, "
+                + "CONSTRAINT UC_Carte_ID UNIQUE (ETUDIANT_NUM_CARTE));"
         );
 
         //création de la table EXAMEN

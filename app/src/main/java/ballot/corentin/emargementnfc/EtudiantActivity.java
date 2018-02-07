@@ -49,16 +49,16 @@ public class EtudiantActivity extends AppCompatActivity {
         Cursor cursor = sqlitedb.rawQuery("select * from " + PresenceDBHelper.ETUDIANT_TABLE_NAME + " where " + PresenceDBHelper.ETUDIANT_ID + " = ?", new String[] { id });
 
         et_id.setText(id);
+        cursor.moveToFirst();
         if(!cursor.isAfterLast()){
             et_nom.setText(cursor.getString(cursor.getColumnIndex(PresenceDBHelper.ETUDIANT_SURNAME)));
-            et_prenom.setText(cursor.getString(cursor.getColumnIndex(PresenceDBHelper.ETUDIANT_FIRSTNAME)));
-            et_carte_id.setText(cursor.getString(cursor.getColumnIndex(PresenceDBHelper.ETUDIANT_CARTE_ID)));
+            et_prenom.setText(cursor.getString(cursor.getColumnIndex(PresenceDBHelper.ETUDIANT_NAME)));
+            et_carte_id.setText(cursor.getString(cursor.getColumnIndex(PresenceDBHelper.ETUDIANT_NUM_CARTE)));
         }
     }
 
     @Override
     protected void onPause() {
-        unregisterReceiver(br);
         super.onPause();
     }
 
@@ -73,8 +73,8 @@ public class EtudiantActivity extends AppCompatActivity {
     public  void update(View view) {
         ContentValues cv = new ContentValues();
         cv.put(PresenceDBHelper.ETUDIANT_SURNAME,et_nom.getText().toString()); //These Fields should be your String values of actual column names
-        cv.put(PresenceDBHelper.ETUDIANT_FIRSTNAME,et_prenom.getText().toString());
-        cv.put(PresenceDBHelper.ETUDIANT_CARTE_ID,et_carte_id.getText().toString());
+        cv.put(PresenceDBHelper.ETUDIANT_NAME,et_prenom.getText().toString());
+        cv.put(PresenceDBHelper.ETUDIANT_NUM_CARTE,et_carte_id.getText().toString());
 
         sqlitedb.update(PresenceDBHelper.ETUDIANT_TABLE_NAME, cv, PresenceDBHelper.ETUDIANT_ID + "="+id, null);
         this.finish();
