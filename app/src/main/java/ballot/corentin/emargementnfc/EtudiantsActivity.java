@@ -1,15 +1,14 @@
 package ballot.corentin.emargementnfc;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -53,6 +52,17 @@ public class EtudiantsActivity extends AppCompatActivity {
         lv_list_etudiant.setAdapter(adapter);
 
         lv_list_etudiant.setBackgroundColor(Color.BLACK);
+
+        lv_list_etudiant.setOnItemClickListener(new OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long id){
+                String item = (String) adapter.getItemAtPosition(position);
+
+                Intent intent = new Intent(getApplicationContext(), EtudiantActivity.class);
+                intent.putExtra("ETUDIANT_DATA", item);
+                startActivity(intent);
+            }
+        });
     }
 
     public void add(View view) {
