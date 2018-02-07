@@ -20,5 +20,6 @@
     <string name="carte_id">Identifiant de la carte étudiant</string>
     <string name="delete">Supprimer</string>
     <string name="update">Modifier</string>
+    <string name="export">Exporter</string>
 
 </resources>

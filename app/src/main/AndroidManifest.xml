@@ -4,6 +4,7 @@
 
     <!-- Permission for using NFC hardware -->
     <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- Forcing device to have NFC hardware -->
     <uses-feature
         android:name="android.hardware.nfc"
