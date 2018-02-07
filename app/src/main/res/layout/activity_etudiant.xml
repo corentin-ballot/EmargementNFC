@@ -48,14 +48,27 @@
         android:id="@+id/etudiant_carte_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:editable="false"
+        android:focusable="false"
         android:text="@string/carte_id" />
 
-
+    <!-- Update button -->
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/delete" />
+        android:text="@string/update"
+        android:onClick="update" />
+
+    <!-- Delete button -->
+    <Button
+        android:id="@+id/button_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/delete"
+        android:onClick="delete" />
 </LinearLayout>
