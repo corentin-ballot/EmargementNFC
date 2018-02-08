@@ -10,47 +10,43 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/etu_id" />
     <EditText
         android:id="@+id/etudiant_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/lastname" />
+        android:layout_height="wrap_content"/>
 
     <!-- Prénom de l'étudiant -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/lastname"  />
     <EditText
         android:id="@+id/etudiant_prenom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/firstname" />
+        android:layout_height="wrap_content" />
 
     <!-- Numéro d'étudiant -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/firstname" />
     <EditText
         android:id="@+id/etudiant_nom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/etu_id" />
+        android:layout_height="wrap_content"/>
 
     <!-- Identifiant de la carte étudiant -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/carte_id"/>
     <EditText
         android:id="@+id/etudiant_carte_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:editable="false"
-        android:focusable="false"
-        android:text="@string/carte_id" />
+        android:focusable="false"/>
 
     <!-- Update button -->
     <Button
