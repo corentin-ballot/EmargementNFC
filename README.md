@@ -3,6 +3,10 @@
 Il s'agit d'une application Android permettant de réaliser un émargement en utilisant les 
 cartes étudiants. 
 
+## Contribution
+
+Projet réalisé par Alexandre Pecikoza, Thibault Brentot, Michel Nguyen, Romain Poret, Antoine Duval et Corentin Ballot.
+
 ## Fonctionnement
 
 L'activité principale contient deux boutons :
